@@ -1,5 +1,9 @@
 require "same_boat/version"
 
 module SameBoat
-  # Your code goes here...
+  autoload :Crews, 'same_boat/crews'
+
+  def self.accept(crews)
+    Crews.new(crews)
+  end
 end
