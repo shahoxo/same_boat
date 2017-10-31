@@ -11,7 +11,7 @@ module SameBoat
     private
 
     def git_commit_hash
-      `git show #{@file_path} | head -n 1 | cut -d ' ' -f2`
+      `git log #{@file_path} | head -n 1 | cut -d ' ' -f2`
     end
 
     def file_hash
@@ -19,7 +19,13 @@ module SameBoat
     end
 
     def git?
-      !!`which git`
+      self.class.git?
+    end
+
+    class << self
+      def git?
+        @_git ||= !!`which git`
+      end
     end
   end
 end
