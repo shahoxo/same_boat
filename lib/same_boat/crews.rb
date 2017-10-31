@@ -1,7 +1,7 @@
 module SameBoat
   class Crews
-    def initialize(crews)
-      @crews = crews
+    def initialize(crews, journal_file: '.same_boat.journal')
+      @crews, @journal_file = crews, journal_file
     end
 
     def row
@@ -9,17 +9,15 @@ module SameBoat
     end
 
     def journal
-      call_over
+      File.write(@journal_file, call_over)
     end
 
-    private
-
     def call_over
-
+      @crews.map { |crew| "#{crew.name}: #{crew.present}" }.join
     end
 
     def past_travel
-
+      File.read(@journal_file)
     end
   end
 end

@@ -8,6 +8,10 @@ module SameBoat
       git? ? git_commit_hash : file_hash
     end
 
+    def name
+      @file_path
+    end
+
     private
 
     def git_commit_hash
