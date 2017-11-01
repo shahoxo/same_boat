@@ -1,7 +1,7 @@
 module SameBoat
   class Crews
-    def initialize(crews, journal_file: '.same_boat.journal')
-      @crews, @journal_file = crews, journal_file
+    def initialize(crews, journal_path:)
+      @crews, @journal_path = crews, journal_path
     end
 
     def row
@@ -9,7 +9,7 @@ module SameBoat
     end
 
     def journal
-      File.write(@journal_file, call_over)
+      File.write(@journal_path, call_over)
     end
 
     def call_over
@@ -17,7 +17,7 @@ module SameBoat
     end
 
     def past_travel
-      File.read(@journal_file)
+      File.exist?(@journal_path) ? File.read(@journal_path) : ''
     end
   end
 end
