@@ -1,6 +1,7 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
-load "lib/tasks/same_boat.rake"
+require 'same_boat/tasks'
+
 
 RSpec::Core::RakeTask.new(:spec)
 
