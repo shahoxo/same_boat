@@ -1,8 +1,27 @@
 # SameBoat
+Sameboat is monitoring forgetting to add something to environment variables (or some files).
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/same_boat`. To experiment with that code, run `bin/console` for an interactive prompt.
+For example, add `AWESOME_VALUE=true` to .env.development during development.
 
-TODO: Delete this and the text above, and describe your gem
+It is at deploy time that you notice that you forgot to add it to .env.preview
+
+SameBoat supports to check it in advance.
+
+The procedure is as follows
+1. Create the latest file stamp of the .env group
+2. Update a part of .env group
+3. Check if the file stamp of the .env group is latest
+
+SameBoat hope 3 will be done at your CI.
+
+The command option is somewhat special.
+
+glossary | option name
+--- | ---
+files | `-c --crews`
+file stamp | `-j --journal`
+
+Because they are in the same boat.
 
 ## Installation
 
@@ -22,7 +41,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# Rakefile
+require 'same_boat/tasks'
+```
+
+### update journal to latest
+`$ rake same_boat:journal` 
+
+### be in the same boat 
+`$ rake same_boat:row`
+
+### specify crews or journal
+```
+$ rake same_boat:journal -c path/to/.env* -j path/to/.some.journal
+$ rake same_boat:row -c path/to/.env* -j path/to/.some.journal
+
+```
+
+
 
 ## Development
 
