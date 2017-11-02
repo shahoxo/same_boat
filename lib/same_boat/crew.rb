@@ -28,7 +28,7 @@ module SameBoat
 
     class << self
       def git?
-        Pathname.new(`which git`.chomp).exist?
+        Pathname.new(`which git`.chomp).executable?
       end
     end
   end
