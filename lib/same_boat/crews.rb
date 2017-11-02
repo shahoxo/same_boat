@@ -1,6 +1,6 @@
 module SameBoat
   class Crews
-    def initialize(crews, journal_path:)
+    def initialize(crews, journal_path: SameBoat::DEFAULT_JOURNAL)
       @crews, @journal_path = crews, journal_path
     end
 

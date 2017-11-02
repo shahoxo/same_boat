@@ -1,6 +1,5 @@
 require "bundler/setup"
 require "same_boat"
-require "fakefs/safe"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

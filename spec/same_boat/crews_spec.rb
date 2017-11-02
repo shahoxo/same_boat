@@ -2,7 +2,6 @@ require "spec_helper"
 
 RSpec.describe SameBoat::Crews do
   describe '#row' do
-    before { FakeFS.activate! }
     let(:raw_crews) { %w(lib/same_boat.rb lib/same_boat/version.rb).map { |path| SameBoat::Crew.new(path) } }
 
     context 'by same crews' do
@@ -23,15 +22,10 @@ RSpec.describe SameBoat::Crews do
 
       it { @crews.row.should be false }
     end
-
-    after { FakeFS.deactivate! }
   end
 
   describe '#journal' do
-    before { FakeFS.activate! }
     let(:raw_crews) { %w(lib/same_boat.rb lib/same_boat/version.rb).map { |path| SameBoat::Crew.new(path) } }
     it { described_class.new(raw_crews).journal.should be_truthy }
-
-    after { FakeFS.deactivate! }
   end
 end
